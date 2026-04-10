@@ -1,0 +1,68 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Wireless Mouse",
+      "price": 599,
+      "category": "Electronics",
+      "image": "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=300",
+      "stock": 15
+    },
+    {
+      "id": 2,
+      "name": "USB-C Cable",
+      "price": 299,
+      "category": "Electronics",
+      "image": "https://images.unsplash.com/photo-1591290619762-c588f0ae8e04?w=300",
+      "stock": 30
+    },
+    {
+      "id": 3,
+      "name": "Notebook A5",
+      "price": 149,
+      "category": "Stationery",
+      "image": "https://images.unsplash.com/photo-1517842645767-c639042777db?w=300",
+      "stock": 50
+    },
+    {
+      "id": 4,
+      "name": "Mechanical Keyboard",
+      "price": 2499,
+      "category": "Electronics",
+      "image": "https://images.unsplash.com/photo-1595225476474-87563907a212?w=300",
+      "stock": 8
+    },
+    {
+      "id": 5,
+      "name": "Coffee Mug",
+      "price": 199,
+      "category": "Home",
+      "image": "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=300",
+      "stock": 25
+    },
+    {
+      "id": 6,
+      "name": "Desk Lamp",
+      "price": 899,
+      "category": "Home",
+      "image": "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=300",
+      "stock": 12
+    },
+    {
+      "id": 7,
+      "name": "Water Bottle",
+      "price": 349,
+      "category": "Home",
+      "image": "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=300",
+      "stock": 40
+    },
+    {
+      "id": 8,
+      "name": "Phone Stand",
+      "price": 249,
+      "category": "Electronics",
+      "image": "https://images.unsplash.com/photo-1602526214921-1fbd2f06fcf0?w=300",
+      "stock": 20
+    }
+  ]
+}
