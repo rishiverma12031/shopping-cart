@@ -6,11 +6,9 @@ fetch('./assets/products.json')
     .then((data) => {
         displayProducts(data);
         addToCartClickHandler(data);
+        cartClickHandler(data);
     })
     .catch(error => console.error(error));
-
-// displayProducts(data);
-// addToCartClickHandler(data);
 
 const displayProducts = ({products}) => {
     products.forEach(({id, name, price, category, image, stock}) => {
@@ -36,13 +34,14 @@ const displayProducts = ({products}) => {
 
         const addToCartBtn = document.createElement('button');
         addToCartBtn.textContent= "Add to cart";
-        addToCartBtn.classList.add('productCard__button')
+        addToCartBtn.classList.add('productCard__button');
         
         productCard.append(productName, productPrice, productCategory, productImage, productStock, addToCartBtn);
         productList.append(productCard);
 
     });
-}
+
+};
 
 const addToCartClickHandler = ({products}) => {
 
@@ -50,21 +49,21 @@ const addToCartClickHandler = ({products}) => {
 
         if(!e.target.classList.contains('productCard__button')) return;
 
-        const temp = e.target.closest('article');
+        const productCard = e.target.closest('article');
 
-        const product = products.find(product => product.id === Number(temp.dataset.id));
+        const product = products.find(product => product.id === Number(productCard.dataset.id));
         
         addItemToCart(product, products);
 
-    })
+    });
 
-}
+};
 
 let cart = [];
 
 const addItemToCart = ({id}, products) => {
 
-    if (cart.find(product => product.id === id)) updateItemInCart(id, products);
+    if (cart.find(product => product.id === id)) incQuantity(id, products);
 
     else {
 
@@ -72,14 +71,7 @@ const addItemToCart = ({id}, products) => {
 
         renderCart(products);
     }
-}
-
-const updateItemInCart = (id, products)=> {
-
-    cart.find(product => product.id === id).quantity++;
-    renderCart(products)
-
-}
+};
 
 const renderCart = (products) => {
 
@@ -87,9 +79,14 @@ const renderCart = (products) => {
 
     cart.forEach(({id, quantity}) => {
         
-        const {name, price} = products.find(product => product.id === id);
+        const {name, price, image} = products.find(product => product.id === id);
 
         const cartItem = document.createElement('li');
+        cartItem.dataset.id = id;
+
+        const itemImage = document.createElement('img');
+        itemImage.setAttribute('src', image);
+        itemImage.setAttribute('alt', `Image of ${name}`);
 
         const itemName = document.createElement('p');
         itemName.textContent = name;
@@ -100,8 +97,83 @@ const renderCart = (products) => {
         const itemQuantity = document.createElement('p');
         itemQuantity.textContent = quantity;
 
-        cartItem.append(itemName, itemPrice, itemQuantity);
+        const subtotal = document.createElement('p');
+        subtotal.textContent = price * quantity;
+
+        const subtotalBreakdown = document.createElement('p');
+        subtotalBreakdown.textContent = `${price} X ${quantity}`;
+
+        const updateQuantity = document.createElement('div');
+
+        const decQuantityBtn = document.createElement('button');
+        decQuantityBtn.textContent = '-';
+        decQuantityBtn.classList.add('cart__button--dec');
+
+        const itemQuantityClone = itemQuantity.cloneNode(true);
+
+        const incQuantityBtn = document.createElement('button');
+        incQuantityBtn.textContent = '+'
+        incQuantityBtn.classList.add('cart__button--inc');
+
+        const removeFromCartBtn = document.createElement('button');
+        removeFromCartBtn.textContent = '🗑️'; 
+        removeFromCartBtn.classList.add('cart__button--remove');
+
+        updateQuantity.append(decQuantityBtn, itemQuantityClone, incQuantityBtn);
+        cartItem.append(itemImage, itemName, updateQuantity,  itemPrice, itemQuantity, subtotal, subtotalBreakdown, removeFromCartBtn);
         cartList.append(cartItem);
 
     });
-}
+    
+};
+
+const cartClickHandler = ({products}) => {
+    
+    cartList.addEventListener('click', e => {
+
+        if(!(e.target.classList.contains('cart__button--inc')
+            || e.target.classList.contains('cart__button--dec')
+            || e.target.classList.contains('cart__button--remove'))
+        ) return;
+
+        const cartItem = e.target.closest('li');
+
+        const id = Number(cartItem.dataset.id);
+
+        if(e.target.classList.contains('cart__button--inc')) incQuantity(id, products);
+
+        if(e.target.classList.contains('cart__button--dec')) decQuantity(id, products);
+        
+        if(e.target.classList.contains('cart__button--remove')) removeItemFromCart(id, products);
+
+    });
+
+};
+
+const incQuantity = (id, products) => {
+
+    cart.find(product => product.id === id).quantity++;
+
+    renderCart(products);
+
+};
+
+const decQuantity = (id, products) => {
+
+    cart.find(product => product.id === id).quantity--;
+
+    if (cart.find(product => product.id === id).quantity === 0) removeItemFromCart(id, products);
+
+    renderCart(products);
+
+};
+
+const removeItemFromCart = (id, products) => {
+
+    const itemIndex = cart.findIndex(product => product.id === id);
+
+    cart.splice(itemIndex, 1);
+
+    renderCart(products);
+
+};
