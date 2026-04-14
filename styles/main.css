@@ -39,10 +39,10 @@ ul {
     gap: 1rem;
 }
 
-.product-container {
+.products {
 }
 
-.product-container__heading {
+.products__heading {
     font-size: 2rem;
     font-weight: 700;
     color: var(--text);
@@ -62,4 +62,8 @@ ul {
 .footer {
     display: flex;
     justify-content: center;
+}
+
+.hidden {
+    display: none;
 }
