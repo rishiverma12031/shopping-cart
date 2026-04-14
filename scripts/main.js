@@ -124,6 +124,19 @@ const renderCart = (products) => {
         cartList.append(cartItem);
 
     });
+
+    if(cart.length === 0) return;
+    
+    const total = document.createElement('div');
+
+    const totalLabel = document.createElement('p');
+    totalLabel.textContent = 'Total: ';
+
+    const totalValue = document.createElement('p');
+    totalValue.textContent = calculateTotal(products);
+
+    total.append(totalLabel, totalValue);
+    cartList.append(total);
     
 };
 
@@ -175,5 +188,19 @@ const removeItemFromCart = (id, products) => {
     cart.splice(itemIndex, 1);
 
     renderCart(products);
+
+};
+
+const calculateTotal = (products) => {
+
+    const cartWithPrice = cart.map(item => {
+       
+        const {price} = products.find(element => element.id === item.id );
+
+        return { ...item, price};
+
+    });
+
+    return cartWithPrice.reduce((acc, cur) => acc += cur.quantity * cur.price, 0);
 
 };
