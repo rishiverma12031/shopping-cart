@@ -7,7 +7,6 @@ const productList = document.querySelector('.products__list');
 const cartList = document.querySelector('.cart');
 
 let cart = loadCart();
-// console.log(cart); fine
 
 productData.then(products => {
 

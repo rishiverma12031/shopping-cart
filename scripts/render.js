@@ -34,13 +34,9 @@ export const displayProducts = (products, productList) => {
 
 export const renderCart = (products, cartList, cart, calculateTotal) => {
 
-    // console.log("render entered", cart); 
-    
-    if(cart.length === 0) return;
-
-    // console.log('crossed render if')
-
     cartList.innerHTML = "";
+
+    if(cart.length === 0) return;
 
     cart.forEach(({id, quantity}) => {
         

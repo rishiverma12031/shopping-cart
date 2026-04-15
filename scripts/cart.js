@@ -1,8 +1,6 @@
 
 export const addToCartClickHandler = (products, productList, saveCart, cart, renderCart, cartList, calculateTotal) => {
 
-    // console.log(cart); fine
-
     productList.addEventListener('click', e => {
 
         if(!e.target.classList.contains('productCard__button')) return;
@@ -46,17 +44,11 @@ export const cartClickHandler = (products, cartList, saveCart, cart, renderCart,
 
 const addItemToCart = (id, products, cart, renderCart, cartList, calculateTotal) => {
 
-    // console.log(cart); fine
-
     if (cart.find(product => product.id === id)) incQuantity(id, products, cart, renderCart, cartList, calculateTotal);
 
     else {
 
         cart.push({id:id, quantity: 1});
-
-        // const updatedCart = [...cart, {id, quantity: 1}];
-
-        // console.log("item pushed", updatedCart);
 
         renderCart(products, cartList, cart, calculateTotal);
     }
