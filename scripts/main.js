@@ -177,6 +177,8 @@ const cartClickHandler = ({products}) => {
         
         if(e.target.classList.contains('cart__button--remove')) removeItemFromCart(id, products);
 
+        saveCart(cart);
+
     });
 
 };
