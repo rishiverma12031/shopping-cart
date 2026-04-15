@@ -7,6 +7,8 @@ fetch('./assets/products.json')
         displayProducts(data);
         addToCartClickHandler(data);
         cartClickHandler(data);
+        const products = data.products;
+        renderCart(products);
     })
     .catch(error => console.error(error));
 
@@ -55,11 +57,27 @@ const addToCartClickHandler = ({products}) => {
         
         addItemToCart(product, products);
 
+        saveCart(cart);
+
     });
 
 };
 
-let cart = [];
+const loadCart = () => {
+
+    const cart = localStorage.getItem('cart');
+
+    return cart ? JSON.parse(cart) : [] ;
+
+};
+
+let cart = loadCart();
+
+const saveCart = (cart) => {
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+};
 
 const addItemToCart = ({id}, products) => {
 
@@ -126,7 +144,7 @@ const renderCart = (products) => {
     });
 
     if(cart.length === 0) return;
-    
+
     const total = document.createElement('div');
 
     const totalLabel = document.createElement('p');
