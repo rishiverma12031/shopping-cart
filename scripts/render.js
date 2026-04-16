@@ -4,28 +4,34 @@ export const displayProducts = (products, productList) => {
 
         const productCard = document.createElement('article');
         productCard.dataset.id = id;
+        productCard.classList.add('product');
         
         const productName = document.createElement('p');
         productName.textContent = name;
+        productName.classList.add('product__name');
 
         const productPrice = document.createElement('p');
         productPrice.textContent = price;
+        productPrice.classList.add('product__price');
 
         const productCategory = document.createElement('p');
         productCategory.textContent = category;
+        productCategory.classList.add('product__category');
 
         const productImage = document.createElement('img');
         productImage.setAttribute('src', image);
         productImage.setAttribute('alt', `Image of ${name}`);
+        productImage.classList.add('product__image');
 
         const productStock = document.createElement('p');
         productStock.textContent = stock;
+        productStock.classList.add('product__stock');
 
         const addToCartBtn = document.createElement('button');
         addToCartBtn.textContent= "Add to cart";
-        addToCartBtn.classList.add('productCard__button');
+        addToCartBtn.classList.add('product__button');
         
-        productCard.append(productName, productPrice, productCategory, productImage, productStock, addToCartBtn);
+        productCard.append(productImage, productName, productPrice, productCategory, productStock, addToCartBtn);
         productList.append(productCard);
 
     });
@@ -44,57 +50,63 @@ export const renderCart = (products, cartList, cart, calculateTotal) => {
 
         const cartItem = document.createElement('li');
         cartItem.dataset.id = id;
+        cartItem.classList.add('item');
 
         const itemImage = document.createElement('img');
         itemImage.setAttribute('src', image);
         itemImage.setAttribute('alt', `Image of ${name}`);
+        itemImage.classList.add('item__image');
 
         const itemName = document.createElement('p');
         itemName.textContent = name;
 
-        const itemPrice = document.createElement('p');
-        itemPrice.textContent = price;
-
         const itemQuantity = document.createElement('p');
         itemQuantity.textContent = quantity;
+        itemQuantity.classList.add('item__quantity');
 
-        const subtotal = document.createElement('p');
-        subtotal.textContent = price * quantity;
+        const subtotal = document.createElement('div');
+
+        const subtotalValue = document.createElement('p');
+        subtotalValue.textContent = price * quantity;
 
         const subtotalBreakdown = document.createElement('p');
         subtotalBreakdown.textContent = `${price} X ${quantity}`;
+        subtotalBreakdown.classList.add('item__total-breakdown');
 
         const updateQuantity = document.createElement('div');
+        updateQuantity.classList.add('update-quantity');
 
         const decQuantityBtn = document.createElement('button');
         decQuantityBtn.textContent = '-';
-        decQuantityBtn.classList.add('cart__button--dec');
-
-        const itemQuantityClone = itemQuantity.cloneNode(true);
+        decQuantityBtn.classList.add('update-quantity__button--dec');
 
         const incQuantityBtn = document.createElement('button');
         incQuantityBtn.textContent = '+'
-        incQuantityBtn.classList.add('cart__button--inc');
+        incQuantityBtn.classList.add('update-quantity__button--inc');
 
         const removeFromCartBtn = document.createElement('button');
-        removeFromCartBtn.textContent = '🗑️'; 
-        removeFromCartBtn.classList.add('cart__button--remove');
+        removeFromCartBtn.textContent = '❌'; 
+        removeFromCartBtn.classList.add('item__button');
 
-        updateQuantity.append(decQuantityBtn, itemQuantityClone, incQuantityBtn);
-        cartItem.append(itemImage, itemName, updateQuantity,  itemPrice, itemQuantity, subtotal, subtotalBreakdown, removeFromCartBtn);
+        const itemStyleDiv1 = document.createElement('div');
+        itemStyleDiv1.classList.add('item__style-div--1');
+
+        const itemStyleDiv2 = document.createElement('div');
+        itemStyleDiv2.classList.add('item__style-div--2');
+
+        subtotal.append(subtotalValue, subtotalBreakdown);
+        updateQuantity.append(decQuantityBtn, itemQuantity, incQuantityBtn);
+        itemStyleDiv1.append(itemImage, itemName, updateQuantity);
+        itemStyleDiv2.append(subtotal, removeFromCartBtn);
+        cartItem.append(itemStyleDiv1, itemStyleDiv2);
         cartList.append(cartItem);
 
     });
 
-    const total = document.createElement('div');
-
-    const totalLabel = document.createElement('p');
-    totalLabel.textContent = 'Total: ';
-
-    const totalValue = document.createElement('p');
-    totalValue.textContent = calculateTotal(products, cart);
-
-    total.append(totalLabel, totalValue);
+    const total = document.createElement('p');
+    total.textContent = `Total: ${calculateTotal(products, cart)}`;
+    total.classList.add('cart__total');
+    
     cartList.append(total);
     
 };

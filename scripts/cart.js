@@ -3,7 +3,7 @@ export const addToCartClickHandler = (products, productList, saveCart, cart, ren
 
     productList.addEventListener('click', e => {
 
-        if(!e.target.classList.contains('productCard__button')) return;
+        if(!e.target.classList.contains('product__button')) return;
 
         const productCard = e.target.closest('article');
 
@@ -21,20 +21,20 @@ export const cartClickHandler = (products, cartList, saveCart, cart, renderCart,
     
     cartList.addEventListener('click', e => {
 
-        if(!(e.target.classList.contains('cart__button--inc')
-            || e.target.classList.contains('cart__button--dec')
-            || e.target.classList.contains('cart__button--remove'))
+        if(!(e.target.classList.contains('update-quantity__button--inc')
+            || e.target.classList.contains('update-quantity__button--dec')
+            || e.target.classList.contains('item__button'))
         ) return;
 
         const cartItem = e.target.closest('li');
 
         const id = Number(cartItem.dataset.id);
 
-        if(e.target.classList.contains('cart__button--inc')) incQuantity(id, products, cart, renderCart, cartList, calculateTotal);
+        if(e.target.classList.contains('update-quantity__button--inc')) incQuantity(id, products, cart, renderCart, cartList, calculateTotal);
 
-        if(e.target.classList.contains('cart__button--dec')) decQuantity(id, products, cart, renderCart, cartList, calculateTotal);
+        if(e.target.classList.contains('update-quantity__button--dec')) decQuantity(id, products, cart, renderCart, cartList, calculateTotal);
         
-        if(e.target.classList.contains('cart__button--remove')) removeItemFromCart(id, products, cart, renderCart, cartList, calculateTotal);
+        if(e.target.classList.contains('item__button')) removeItemFromCart(id, products, cart, renderCart, cartList, calculateTotal);
 
         saveCart(cart);
 
