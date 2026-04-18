@@ -2,6 +2,7 @@ import { productData } from "./data.js";
 import { saveCart, loadCart } from "./storage.js";
 import { addItemToCart, incQuantity, decQuantity, removeItemFromCart } from "./cart.js";
 import { renderProducts, renderCart } from "./render.js";
+import { fetchElementId } from "./utils.js";
 
 const productList = document.querySelector('.products__list');
 const cartList = document.querySelector('.cart');
@@ -23,9 +24,7 @@ const clickHandler = (products)=> {
 
         if(!e.target.classList.contains('product__button')) return;
 
-        const productCard = e.target.closest('article');
-
-        const id = Number(productCard.dataset.id);
+        const id = fetchElementId(e, 'article');
         
         cart = addItemToCart(id, cart);
 
@@ -42,9 +41,7 @@ const clickHandler = (products)=> {
             || e.target.classList.contains('item__button'))
         ) return;
 
-        const cartItem = e.target.closest('li');
-
-        const id = Number(cartItem.dataset.id);
+        const id = fetchElementId(e, 'li');
 
         if(e.target.classList.contains('update-quantity__button--inc')) cart = incQuantity(id, cart);
 
