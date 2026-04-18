@@ -1,5 +1,6 @@
+import { calculateTotal } from "./cart.js";
 
-export const displayProducts = (products, productList) => {
+export const renderProducts = (products, productList) => {
     products.forEach(({id, name, price, category, image, stock}) => {
 
         const productCard = document.createElement('article');
@@ -38,7 +39,7 @@ export const displayProducts = (products, productList) => {
 
 };
 
-export const renderCart = (products, cartList, cart, calculateTotal) => {
+export const renderCart = (products, cartList, cart) => {
 
     cartList.innerHTML = "";
 
