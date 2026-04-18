@@ -1,5 +1,5 @@
 import { calculateTotal } from "./cart.js";
-import { formatPrice } from "./utils.js";
+import { find, formatPrice } from "./utils.js";
 
 export const renderProducts = (products, productList) => {
     products.forEach(({id, name, price, category, image, stock}) => {
@@ -58,7 +58,17 @@ export const renderCart = (products, cartList, cart) => {
 
     cart.forEach(({id, quantity}) => {
         
-        const {name, price, image} = products.find(product => product.id === id);
+        const product = find(id, products);
+
+        if (!product) {
+
+            console.error(`product ${id} not found`);
+            
+            return;
+            
+        }
+
+        const {name, price, image} = product;
 
         const cartItem = document.createElement('li');
         cartItem.dataset.id = id;
