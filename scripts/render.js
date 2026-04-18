@@ -101,10 +101,10 @@ export const renderCart = (products, cartList, cart) => {
         removeFromCartBtn.classList.add('item__button');
 
         const itemStyleDiv1 = document.createElement('div');
-        itemStyleDiv1.classList.add('item__style-div--1');
+        itemStyleDiv1.classList.add('item__info');
 
         const itemStyleDiv2 = document.createElement('div');
-        itemStyleDiv2.classList.add('item__style-div--2');
+        itemStyleDiv2.classList.add('item__actions');
 
         subtotal.append(subtotalValue, subtotalBreakdown);
         updateQuantity.append(decQuantityBtn, itemQuantity, incQuantityBtn);

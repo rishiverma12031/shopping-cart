@@ -149,13 +149,13 @@ ul {
     justify-content: space-between;
 }
 
-.item__style-div--1 {
+.item__info {
     display: flex;
     gap: 1rem;
     align-items: center;
 }
 
-.item__style-div--2 {
+.item__actions {
     display: flex;
     gap: 1rem;
     align-items: center;
