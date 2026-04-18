@@ -43,7 +43,17 @@ export const renderCart = (products, cartList, cart) => {
 
     cartList.innerHTML = "";
 
-    if(cart.length === 0) return;
+    if(cart.length === 0) {
+
+        const cartItem = document.createElement('p');
+        cartItem.textContent = "Your cart is empty";
+        cartItem.classList.add('cart__empty');
+
+        cartList.append(cartItem);
+        
+        return;
+
+    }
 
     cart.forEach(({id, quantity}) => {
         

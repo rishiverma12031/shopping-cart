@@ -131,6 +131,13 @@ ul {
     gap: 1rem;
 }
 
+.cart__empty {
+    text-align: center;
+    font-size: 1.25rem;
+    padding: 2rem 0;
+    color: var(--primary);
+}
+
 .cart__total {
     align-self: flex-end;
     font-weight: 500;
