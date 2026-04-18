@@ -1,4 +1,5 @@
 import { calculateTotal } from "./cart.js";
+import { formatPrice } from "./utils.js";
 
 export const renderProducts = (products, productList) => {
     products.forEach(({id, name, price, category, image, stock}) => {
@@ -50,7 +51,7 @@ export const renderCart = (products, cartList, cart) => {
         cartItem.classList.add('cart__empty');
 
         cartList.append(cartItem);
-        
+
         return;
 
     }
@@ -78,10 +79,10 @@ export const renderCart = (products, cartList, cart) => {
         const subtotal = document.createElement('div');
 
         const subtotalValue = document.createElement('p');
-        subtotalValue.textContent = price * quantity;
+        subtotalValue.textContent = formatPrice(price * quantity);
 
         const subtotalBreakdown = document.createElement('p');
-        subtotalBreakdown.textContent = `${price} X ${quantity}`;
+        subtotalBreakdown.textContent = `${formatPrice(price)} X ${quantity}`;
         subtotalBreakdown.classList.add('item__total-breakdown');
 
         const updateQuantity = document.createElement('div');
@@ -115,7 +116,7 @@ export const renderCart = (products, cartList, cart) => {
     });
 
     const total = document.createElement('p');
-    total.textContent = `Total: ${calculateTotal(products, cart)}`;
+    total.textContent = `Total: ${formatPrice(calculateTotal(products, cart))}`;
     total.classList.add('cart__total');
     
     cartList.append(total);
