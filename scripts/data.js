@@ -1,5 +1,24 @@
 
-export const productData = fetch('./assets/products.json')
-    .then(response => response.json())
-    .then((data) => data.products)
-    .catch(error => console.error(error));
+export const loadProducts = async () => {
+
+    try {
+
+        const response = await fetch('./assets/products.json');
+        
+        if(!response.ok) throw new error (`HTTP error! status: ${response.status}`);
+
+        const data = await response.json();
+
+        return data.products;
+
+    }
+
+    catch(error) {
+
+        console.error(`Failed to load products: ${error}`);
+        
+        return [];
+
+    }
+
+}

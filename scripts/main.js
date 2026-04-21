@@ -1,4 +1,4 @@
-import { productData } from "./data.js";
+import { loadProducts } from "./data.js";
 import { saveCart, loadCart } from "./storage.js";
 import { addItemToCart, incQuantity, decQuantity, removeItemFromCart } from "./cart.js";
 import { renderProducts, renderCart } from "./render.js";
@@ -9,14 +9,7 @@ const cartList = document.querySelector('.cart');
 
 let cart = loadCart();
 
-productData.then(products => {
-
-    renderProducts(products, productList);
-    renderCart(products, cartList, cart);
-    clickHandler(products);
-
-});
-
+const products = await loadProducts();
 
 const clickHandler = (products)=> {
 
@@ -56,3 +49,7 @@ const clickHandler = (products)=> {
     });
 
 }
+
+renderProducts(products, productList);
+renderCart(products, cartList, cart);
+clickHandler(products);
