@@ -5,4 +5,19 @@
 
 .footer__link {
     color: var(--primary);
+    padding: 0 0.25rem;
+    border-radius: 4px;
+}
+
+.footer__link:hover {
+    color: color-mix(in oklch, var(--primary), rgb(0,0,0) 20%);
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.footer__link:focus-visible {
+    outline: 2px dashed var(--primary);  
+}
+
+.footer__link:active {
+    opacity: 0.6;
 }

@@ -33,6 +33,10 @@
     justify-content: space-between;
 }
 
+.item:hover {
+    background-color: color-mix(in oklch, var(--primary), rgb(255,255,255) 90%);
+}
+
 .item__info {
     display: flex;
     gap: 1rem;
@@ -66,6 +70,24 @@
     background-color: color-mix(in oklch, red, transparent 90%);
     border: 2px solid color-mix(in oklch, red, transparent 50%);
     border-radius: 4px;
+    transition: background-color 0.2s ease-in-out,
+                transform 0.1s ease;
+}
+
+.item__button:hover {
+    background-color: color-mix(in oklch, red, transparent 80%);
+    transform: translateY(-1px);
+}
+
+.item__button:focus-visible {
+    outline: 2px solid var(--background);
+    outline-offset: -2px;
+}
+
+.item__button:active {
+    transform: translateY(0) scale(0.98);
+    background-color: color-mix(in oklch, red, transparent 80%);
+    transition: none;
 }
 
 .update-quantity {
@@ -81,10 +103,40 @@
     width: 1rem;
     background-color: color-mix(in oklch, var(--primary), transparent 75%);
     border: none;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.update-quantity__button--dec:hover {
+    background-color: color-mix(in oklch, var(--primary), transparent 50%);
+}
+
+.update-quantity__button--dec:focus-visible {
+    outline: 2px solid var(--background);
+    outline-offset: -2px;
+    border-radius: 4px;
+}
+
+.update-quantity__button--dec:active{
+    opacity: 0.6;
 }
 
 .update-quantity__button--inc {
     width: 1rem;
     background-color: color-mix(in oklch, var(--primary), transparent 75%);
     border: none;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.update-quantity__button--inc:hover {
+    background-color: color-mix(in oklch, var(--primary), transparent 50%);
+}
+
+.update-quantity__button--inc:focus-visible {
+    outline: 2px solid var(--background);
+    outline-offset: -2px;
+    border-radius: 4px;
+}
+
+.update-quantity__button--inc:active{
+    opacity: 0.6;
 }
