@@ -32,8 +32,12 @@ export const renderProducts = (products, productList) => {
         const addToCartBtn = document.createElement('button');
         addToCartBtn.textContent= "Add to cart";
         addToCartBtn.classList.add('product__button');
+
+        const productInfo = document.createElement('div');
+        productInfo.classList.add('product__info');
         
-        productCard.append(productImage, productName, productPrice, productCategory, productStock, addToCartBtn);
+        productInfo.append(productName, productPrice, productCategory, productStock, addToCartBtn);
+        productCard.append(productImage, productInfo);
         productList.append(productCard);
 
     });

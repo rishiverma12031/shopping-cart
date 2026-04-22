@@ -1,16 +1,17 @@
 .footer {
     display: flex;
     justify-content: center;
+    padding: 2rem 1rem;
 }
 
 .footer__link {
     color: var(--primary);
-    padding: 0 0.25rem;
+    padding: 0.25rem 0.5rem;
     border-radius: 4px;
 }
 
 .footer__link:hover {
-    color: color-mix(in oklch, var(--primary), rgb(0,0,0) 20%);
+    color: color-mix(in oklch, var(--primary), black 20%);
     background-color: rgba(0, 0, 0, 0.05);
 }
 
