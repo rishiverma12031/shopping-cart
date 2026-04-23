@@ -1,6 +1,8 @@
 :root {
-    --primary: grey;
-    --text: black;
-    --background: white ;
+    --text: #12080d;
+    --background: #faf4f7;
+    --primary: #b55580;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text);
+    background-color: var(--background);
 }

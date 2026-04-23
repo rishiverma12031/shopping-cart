@@ -2,6 +2,8 @@
     display: flex;
     justify-content: center;
     padding: 2rem 1rem;
+    background-color: color-mix(in oklch, var(--background), black 10%);
+    border-radius: 16px 16px 0 0;
 }
 
 .footer__link {
@@ -16,7 +18,8 @@
 }
 
 .footer__link:focus-visible {
-    outline: 2px dashed var(--primary);  
+    outline: 2px dashed var(--primary);
+    outline-offset: -4px;  
 }
 
 .footer__link:active {

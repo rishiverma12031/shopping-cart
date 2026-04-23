@@ -9,7 +9,6 @@
 .cart-container__heading {
     font-size: 2rem;
     font-weight: 700;
-    color: var(--text);
 }
 
 .cart {
@@ -36,10 +35,11 @@
     justify-content: space-between;
     gap: 1rem;
     border-radius: 4px;
+    background-color: color-mix(in oklch, var(--primary), transparent 90%);
 }
 
 .item:hover {
-    background-color: color-mix(in oklch, var(--primary), transparent 90%);
+    background-color: color-mix(in oklch, var(--primary), transparent 80%);
 }
 
 .item__info {
@@ -84,7 +84,7 @@
 }
 
 .item__button:focus-visible {
-    outline: 2px solid var(--background);
+    outline: 2px solid var(--text);
     outline-offset: -2px;
 }
 
