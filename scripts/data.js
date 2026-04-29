@@ -5,7 +5,7 @@ export const loadProducts = async () => {
 
         const response = await fetch('./assets/products.json');
         
-        if(!response.ok) throw new error (`HTTP error! status: ${response.status}`);
+        if(!response.ok) throw new Error (`HTTP error! status: ${response.status}`);
 
         const data = await response.json();
 
