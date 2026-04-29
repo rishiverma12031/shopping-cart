@@ -1,0 +1,33 @@
+{
+  "name": "shopping-cart",
+  "version": "1.0.0",
+  "description": "A modern shopping cart application built with vanilla JavaScript, demonstrating ES6+ features, functional programming, and clean code practices",
+  "main": "index.html",
+  "type": "module",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx serve . -p 3000"
+  },
+  "keywords": [
+    "vanilla-javascript",
+    "shopping-cart",
+    "es6",
+    "functional-programming",
+    "local-storage",
+    "dom-manipulation",
+    "immutability",
+    "pure-functions"
+  ],
+  "author": "Rishi Verma",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/shopping-cart.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/shopping-cart/issues"
+  },
+  "homepage": "https://github.com/yourusername/shopping-cart#readme",
+  "devDependencies": {},
+  "dependencies": {}
+}
